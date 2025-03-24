@@ -36,6 +36,10 @@ namespace AIVoiceYomiage
 
         public void Play(string message)
         {
+            if (_ttsControl.Status != HostStatus.Idle)
+            {
+                return;
+            }
             _ttsControl.Text = message;
             _ttsControl.TextSelectionStart = 0;
             _ttsControl.TextSelectionLength = message.Length;
